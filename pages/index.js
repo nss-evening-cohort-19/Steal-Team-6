@@ -1,4 +1,4 @@
-import { Button } from 'react-bootstrap';
+import { Button } from 'bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 

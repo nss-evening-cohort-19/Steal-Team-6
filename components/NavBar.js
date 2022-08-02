@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import {
   Navbar, Container, Nav, Button,
-} from 'react-bootstrap';
+} from 'bootstrap';
 import { signOut } from '../utils/auth';
 
 export default function NavBar() {
