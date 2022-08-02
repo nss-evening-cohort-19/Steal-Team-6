@@ -1,19 +1,20 @@
 import React from 'react';
-import {
-  Spinner,
-} from 'bootstrap';
 
 export default function Loading() {
   return (
     <div className="text-center mt-5">
-      <Spinner
+      <div
+        className="spinner-border"
         animation="border"
         style={{
           color: '#00BF67',
           width: '100px',
           height: '100px',
         }}
-      />
+        role="status"
+      >
+        <span className="visually-hidden">Loading...</span>
+      </div>
     </div>
   );
 }
