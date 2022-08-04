@@ -25,8 +25,8 @@ const getSingleCard = (firebaseKey) => new Promise((resolve, reject) => {
 const createCards = (cardObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/card.json`, cardObj)
     .then((response) => {
-      const payload = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/card/${response.data.name}.json`, payload)
+      const payload = { firebaseKey: response.data.title };
+      axios.patch(`${dbUrl}/card/${response.data.title}.json`, payload)
         .then(() => {
           getCards(cardObj.uid).then(resolve);
         });
