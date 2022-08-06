@@ -45,10 +45,17 @@ const updateProject = (projectObj, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getProjectLists = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/lists.json?orderBy="projectId"&equalTo="${firebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getProjects,
   createProject,
   getSingleProject,
   deleteSingleProject,
   updateProject,
+  getProjectLists,
 };

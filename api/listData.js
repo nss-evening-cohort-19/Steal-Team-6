@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getList = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/list.json?orderBy="uid"&equalTo="${uid}"`)
+const getList = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/list.json?orderBy="projectId"&equalTo="${firebaseKey}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -42,10 +42,17 @@ const updateList = (listObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getListCards = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/cards.json?orderBy="listId"&equalTo="${firebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getList,
   createList,
   deleteList,
   getSingleList,
   updateList,
+  getListCards,
 };
