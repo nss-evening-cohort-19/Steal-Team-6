@@ -1,45 +1,81 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { deleteSingleCard, getSingleCard } from '../../api/cardData';
+// import { useEffect } from 'react/cjs/react.production.min';
+import { useAuth } from '../../utils/context/authContext';
+import { createCards, updateCard } from '../../api/cardData';
 
-export default function CardCard({ cardObj, onUpdate }) {
-  const [cardName, setCardName] = useState({});
-  const deleteThisCard = () => {
-    if (window.confirm(`Delete ${cardObj.title}?`)) {
-      deleteSingleCard(cardObj.firebaseKey).then(() => onUpdate());
+const initalState = {
+  title: '',
+};
+
+function CardForm({ obj }) {
+  const [formInput, setFormInput] = useState(initalState);
+  // const [cards, setCards] = useState([]);
+  const router = useRouter();
+  const { user } = useAuth();
+
+  // useEffect(() => {
+  //   getCards(user.uid).then(setCards);
+  //   if (obj.firebaseKey) setFormInput(obj);
+  // }, [obj, user]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (obj.firebaseKey) {
+      updateCard(formInput)
+        .then(() => router.push(`/card/${obj.firebaseKey}`));
+    } else {
+      const payload = { ...formInput, uid: user.uid };
+      createCards(payload).then(() => {
+        router.push('/cards');
+      });
     }
   };
-  useEffect(() => {
-    getSingleCard(cardObj.listId).then((response) => {
-      setCardName(response);
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <>
-      <card style={{ width: '18rem', margin: '10px' }}>
-        <div>title: {cardObj.title}</div>
-        <div><p className="card-text bold"><b>Team:</b> {cardName.title}</p></div>
-        <Link href={`/cards/${cardObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
-        </Link>
-        <Link href={`/cards/edit/${cardObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
-        </Link>
-        <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisCard}>DELETE</button>
-      </card>
+      <Head>
+        <title>Add Card</title>
+        <meta name="description" content="Meta description for the team page" />
+      </Head>
+      <form onSubmit={handleSubmit}>
+        <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</h2>
+        {/* Name */}
+        <label htmlFor="title" className="ff">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter Title"
+            name="title"
+            value={formInput.title}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</button>
+      </form>
     </>
   );
 }
 
-CardCard.propTypes = {
-  cardObj: PropTypes.shape({
-    firebaseKey: PropTypes.string,
+CardForm.propTypes = {
+  obj: PropTypes.shape({
     title: PropTypes.string,
-    date: PropTypes.string,
+    firebaseKey: PropTypes.string,
     listId: PropTypes.string,
-    comments: PropTypes.string,
-  }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
+  }),
 };
+
+CardForm.defaultProps = {
+  obj: initalState,
+};
+
+export default CardForm;
