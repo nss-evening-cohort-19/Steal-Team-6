@@ -48,23 +48,42 @@ function ProjectForm({ obj }) {
       </Head>
       <form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} New Project</h2>
-        <label htmlFor="floatingInput1" label="Team Name" className="mb-3">
-          <form type="text" placeholder="Enter your project name" name="name" value={formInput.title} onChange={handleChange} required />
-        </label>
-
+        <div className="form-floating mb-3">
+          <input type="text" className="form-control" id="floatingInput" name="title" placeholder="Enter Project Title" value={formInput.title} onChange={handleChange} required />
+          <label htmlFor="floatingInput">Project Title</label>
+        </div>
+        {/* <label htmlFor="title" label="Project Name" className="mb-3"> */}
+        {/* <input className="form-control" type="text" placeholder="Enter your project name" name="name" value={formInput.title} onChange={handleChange} required /> */}
+        {/* </label> */}
+        <>
+          <div className="form-check form-switch">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              checked={formInput.public}
+              onChange={(e) => setFormInput((prevState) => ({
+                ...prevState,
+                public: e.target.checked,
+              }))}
+            />
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Public Project?</label>
+          </div>
+        </>
         {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
-        <form
-          className="text-white mb-3"
-          type="switch"
-          id="public"
-          name="public"
+        {/* <input
+          className="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefault"
+          role="switch"
           label="Public Project?"
           checked={formInput.public}
           onChange={(e) => setFormInput((prevState) => ({
             ...prevState,
             public: e.target.checked,
           }))}
-        />
+        /> */}
         <button className="btn btn-primary btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Project</button>
       </form>
     </>

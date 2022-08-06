@@ -18,8 +18,8 @@ const getProjects = (uid) => new Promise((resolve, reject) => {
 const createProject = (projectObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/projects.json`, projectObj)
     .then((response) => {
-      const payload = { firebaseKey: response.data.title };
-      axios.patch(`${dbUrl}/projects/${response.data.title}.json`, payload).then(() => {
+      const payload = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/projects/${response.data.name}.json`, payload).then(() => {
         getProjects().then(resolve);
       });
     }).catch(reject);
