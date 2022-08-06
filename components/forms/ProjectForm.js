@@ -52,9 +52,6 @@ function ProjectForm({ obj }) {
           <input type="text" className="form-control" id="floatingInput" name="title" placeholder="Enter Project Title" value={formInput.title} onChange={handleChange} required />
           <label htmlFor="floatingInput">Project Title</label>
         </div>
-        {/* <label htmlFor="title" label="Project Name" className="mb-3"> */}
-        {/* <input className="form-control" type="text" placeholder="Enter your project name" name="name" value={formInput.title} onChange={handleChange} required /> */}
-        {/* </label> */}
         <>
           <div className="form-check form-switch">
             <input
@@ -71,19 +68,6 @@ function ProjectForm({ obj }) {
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Public Project?</label>
           </div>
         </>
-        {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
-        {/* <input
-          className="form-check-input"
-          type="checkbox"
-          id="flexSwitchCheckDefault"
-          role="switch"
-          label="Public Project?"
-          checked={formInput.public}
-          onChange={(e) => setFormInput((prevState) => ({
-            ...prevState,
-            public: e.target.checked,
-          }))}
-        /> */}
         <button className="btn btn-primary btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Project</button>
       </form>
     </>

@@ -46,7 +46,7 @@ const updateProject = (projectObj, uid) => new Promise((resolve, reject) => {
 });
 
 const getProjectLists = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/lists.json?orderBy="projectId"&equalTo="${firebaseKey}"`)
+  axios.get(`${dbUrl}/list.json?orderBy="projectId"&equalTo="${firebaseKey}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
