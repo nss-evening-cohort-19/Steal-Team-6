@@ -14,6 +14,7 @@ export default function CardCard({ cardObj, onUpdate }) {
     getSingleCard(cardObj.listId).then((response) => {
       setCardName(response);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
