@@ -43,7 +43,7 @@ const updateList = (listObj) => new Promise((resolve, reject) => {
 });
 
 const getListCards = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/cards.json?orderBy="listId"&equalTo="${firebaseKey}"`)
+  axios.get(`${dbUrl}/card.json?orderBy="listId"&equalTo="${firebaseKey}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });

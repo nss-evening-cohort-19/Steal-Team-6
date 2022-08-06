@@ -24,10 +24,10 @@ function ListForm({ obj }) {
   // }, [obj, user]);
 
   const handleChange = (e) => {
-    const { title, value } = e.target;
+    const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
-      [title]: value,
+      [name]: value,
     }));
   };
 
@@ -45,39 +45,26 @@ function ListForm({ obj }) {
   };
 
   return (
-    // <form onSubmit={handleSubmit}>
-    //   <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} List</h2>
-    //   <input
-    //     type="text"
-    //     className="form-control"
-    //     aria-label="Text input with dropdown button"
-    //     name="title"
-    //     value={formInput.title}
-    //     onChange={handleChange}
-    //     required
-    //   />
-    //   <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-    //   <ul className="dropdown-menu dropdown-menu-end" />
-    // </form>
     <>
       <Head>
         <title>Add List</title>
       </Head>
       <form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} List</h2>
-        {/* Name */}
-        <label htmlFor="title" className="ff">
+        <div className="form-floating mb-3">
           <input
-            className="form-control"
             type="text"
+            className="form-control"
             id="floatingInput"
             placeholder="Enter Title"
             name="title"
             value={formInput.title}
+            defaultValue={formInput.title}
             onChange={handleChange}
             required
           />
-        </label>
+          <label htmlFor="title">List Title</label>
+        </div>
         <button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} List</button>
       </form>
     </>
