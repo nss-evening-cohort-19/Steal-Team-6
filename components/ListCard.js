@@ -15,10 +15,10 @@ function ListCard({ listObj, onUpdate }) {
       <card style={{ width: '18rem', margin: '10px' }}>
         <div>Title: {listObj.title}</div>
         <div><p className="card-text bold"><b>List:</b> {listObj.title}</p></div>
-        <Link href={`/players/${listObj.firebaseKey}`} passHref>
+        <Link href={`/list/${listObj.firebaseKey}`} passHref>
           <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
         </Link>
-        <Link href={`/players/edit/${listObj.firebaseKey}`} passHref>
+        <Link href={`/list/edit/${listObj.firebaseKey}`} passHref>
           <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
         </Link>
         <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisList}>DELETE</button>

@@ -13,10 +13,10 @@ export default function ProjectCard({ projectObj, onUpdate }) {
     <>
       <div className="card" style={{ width: '18rem', margin: '10px' }}>
         {projectObj.title}
-        <Link href={`/projects/${projectObj.firebaseKey}`} passHref>
+        <Link href={`/project/${projectObj.firebaseKey}`} passHref>
           <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
         </Link>
-        <Link href={`/projects/edit/${projectObj.firebaseKey}`} passHref>
+        <Link href={`/project/edit/${projectObj.firebaseKey}`} passHref>
           <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
         </Link>
         <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisProject}>DELETE</button>

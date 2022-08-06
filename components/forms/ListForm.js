@@ -62,7 +62,6 @@ function ListForm({ obj }) {
     <>
       <Head>
         <title>Add List</title>
-        <meta name="description" content="Meta description for the team page" />
       </Head>
       <form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} List</h2>
@@ -71,6 +70,7 @@ function ListForm({ obj }) {
           <input
             className="form-control"
             type="text"
+            id="floatingInput"
             placeholder="Enter Title"
             name="title"
             value={formInput.title}
