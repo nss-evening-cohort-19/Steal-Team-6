@@ -27,9 +27,7 @@ const createCards = (cardObj) => new Promise((resolve, reject) => {
     .then((response) => {
       const payload = { firebaseKey: response.data.title };
       axios.patch(`${dbUrl}/card/${response.data.title}.json`, payload)
-        .then(() => {
-          getCards(cardObj.uid).then(resolve);
-        });
+        .then(resolve);
     }).catch(reject);
 });
 // DELETE CARD
@@ -48,7 +46,7 @@ const deleteCards = (firebaseKey) => new Promise((resolve, reject) => {
 // UPDATE PLAYER
 const updateCard = (cardObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/card/${cardObject.firebaseKey}.json`, cardObject)
-    .then(() => getCards(cardObject.uid).then(resolve))
+    .then(resolve)
     .catch(reject);
 });
 

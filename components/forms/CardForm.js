@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+// import { useEffect } from 'react/cjs/react.production.min';
 import { useAuth } from '../../utils/context/authContext';
 import { createCards, updateCard } from '../../api/cardData';
 
@@ -11,8 +12,14 @@ const initalState = {
 
 function CardForm({ obj }) {
   const [formInput, setFormInput] = useState(initalState);
+  // const [cards, setCards] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
+
+  // useEffect(() => {
+  //   getCards(user.uid).then(setCards);
+  //   if (obj.firebaseKey) setFormInput(obj);
+  // }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +36,7 @@ function CardForm({ obj }) {
     } else {
       const payload = { ...formInput, uid: user.uid };
       createCards(payload).then(() => {
-        router.push('/');
+        router.push('/cards');
       });
     }
   };
