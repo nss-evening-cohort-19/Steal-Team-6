@@ -12,8 +12,8 @@ function Home() {
   return (
     <div className="text-center my-4">
       <div className="d-flex flex-wrap">
-        {/* TODO: map over books here using BookCard component */}
         {projects.map((project) => (
+          // eslint-disable-next-line react/jsx-no-undef
           <ProjectCard key={project.firebaseKey} projectObj={project} onUpdate={getAllTheProjects} />
         ))}
       </div>
