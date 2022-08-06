@@ -1,1 +1,1 @@
-// test //
+// function viewProjectDetail
