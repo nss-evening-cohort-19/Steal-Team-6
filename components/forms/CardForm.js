@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-// import { useEffect } from 'react/cjs/react.production.min';
+import { FloatingLabel, Form } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createCards, updateCard } from '../../api/cardData';
+import { getList } from '../../api/listData';
 
 const initalState = {
   title: '',
@@ -12,14 +13,14 @@ const initalState = {
 
 function CardForm({ obj }) {
   const [formInput, setFormInput] = useState(initalState);
-  // const [cards, setCards] = useState([]);
+  const [lists, setLists] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
-  // useEffect(() => {
-  //   getCards(user.uid).then(setCards);
-  //   if (obj.firebaseKey) setFormInput(obj);
-  // }, [obj, user]);
+  useEffect(() => {
+    getList(lists.projectId).then(setLists);
+    if (obj.firebaseKey) setFormInput(obj);
+  }, [obj, lists]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +37,7 @@ function CardForm({ obj }) {
     } else {
       const payload = { ...formInput, uid: user.uid };
       createCards(payload).then(() => {
-        router.push('/cards');
+        router.push('/');
       });
     }
   };
@@ -48,18 +49,35 @@ function CardForm({ obj }) {
       </Head>
       <form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</h2>
-        {/* Name */}
-        <label htmlFor="title" className="ff">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Enter Title"
-            name="title"
-            value={formInput.title}
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Enter Title"
+          name="title"
+          value={formInput.title}
+          onChange={handleChange}
+          required
+        />
+        <FloatingLabel controlId="floatingSelect" label="Card">
+          <Form.Select
+            aria-label="Card"
+            name="listId"
             onChange={handleChange}
+            className="mb-3"
             required
-          />
-        </label>
+          >
+            <option value="">Select a List</option>
+            {lists.map((list) => (
+              <option
+                key={list.firebaseKey}
+                value={list.firebaseKey}
+                selected={obj.listId === list.firebaseKey}
+              >
+                {list.title}
+              </option>
+            ))}
+          </Form.Select>
+        </FloatingLabel>
         <button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</button>
       </form>
     </>

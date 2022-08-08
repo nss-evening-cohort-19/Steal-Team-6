@@ -4,8 +4,8 @@ import { clientCredentials } from '../utils/client';
 const dbUrl = clientCredentials.databaseURL;
 
 // GET ALL CARDS
-const getCards = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/card.json?orderBy="uid"&equalTo="${uid}"`)
+const getCards = (listId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/card.json?orderBy="listId"&equalTo="${listId}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -25,8 +25,8 @@ const getSingleCard = (firebaseKey) => new Promise((resolve, reject) => {
 const createCards = (cardObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/card.json`, cardObj)
     .then((response) => {
-      const payload = { firebaseKey: response.data.title };
-      axios.patch(`${dbUrl}/card/${response.data.title}.json`, payload)
+      const payload = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/card/${response.data.name}.json`, payload)
         .then(resolve);
     }).catch(reject);
 });

@@ -30,8 +30,8 @@ const getSingleList = (firebaseKey) => new Promise((resolve, reject) => {
 const createList = (listObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/list.json`, listObj)
     .then((response) => {
-      const payload = { firebaseKey: response.data.title };
-      axios.patch(`${dbUrl}/list/${response.data.title}.json`, payload)
+      const payload = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/list/${response.data.name}.json`, payload)
         .then(resolve);
     }).catch(reject);
 });
