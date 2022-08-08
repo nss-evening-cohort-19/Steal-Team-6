@@ -4,8 +4,8 @@ import { clientCredentials } from '../utils/client';
 const dbUrl = clientCredentials.databaseURL;
 
 // GET ALL CARDS
-const getCards = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/card.json?orderBy="uid"&equalTo="${uid}"`)
+const getCards = (listId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/card.json?orderBy="listId"&equalTo="${listId}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));

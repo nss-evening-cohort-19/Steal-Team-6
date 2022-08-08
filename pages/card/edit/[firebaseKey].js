@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleCard } from '../../../api/cardData';
-import CardCard from '../../../components/CardCard';
+import CardForm from '../../../components/forms/CardForm';
 
 export default function EditCard() {
-  const [editItem, setEditItem] = useState({});
+  const [cardObj, setEditItem] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
   useEffect(() => {
     getSingleCard(firebaseKey).then(setEditItem);
   }, [firebaseKey]);
-  return (<CardCard obj={editItem} />);
+  return (<CardForm obj={cardObj} />);
 }
