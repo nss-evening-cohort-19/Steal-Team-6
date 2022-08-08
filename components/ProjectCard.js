@@ -9,6 +9,7 @@ export default function ProjectCard({ projectObj, onUpdate }) {
       deleteSingleProject(projectObj.firebaseKey).then(() => onUpdate());
     }
   };
+  console.warn(projectObj);
   return (
     <>
       <div className="card" style={{ width: '18rem', margin: '10px' }}>
