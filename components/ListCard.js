@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { Card } from 'react-bootstrap';
 import { deleteList } from '../api/listData';
 
 function ListCard({ listObj, onUpdate }) {
@@ -12,7 +13,7 @@ function ListCard({ listObj, onUpdate }) {
 
   return (
     <>
-      <card style={{ width: '18rem', margin: '10px' }}>
+      <Card style={{ width: '18rem', margin: '10px' }}>
         <div>Title: {listObj.title}</div>
         <div><p className="card-text bold"><b>List:</b> {listObj.title}</p></div>
         <Link href={`/list/${listObj.firebaseKey}`} passHref>
@@ -22,7 +23,7 @@ function ListCard({ listObj, onUpdate }) {
           <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
         </Link>
         <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisList}>DELETE</button>
-      </card>
+      </Card>
     </>
 
   );

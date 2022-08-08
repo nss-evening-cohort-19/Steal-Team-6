@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { getSingleCard } from '../../api/cardData';
+import CardCard from '../../components/CardCard';
 
 export default function ViewCard() {
   const [cardDetails, setCardDetails] = useState({});
@@ -14,16 +15,16 @@ export default function ViewCard() {
   return (
     <>
       <Head>
-        <title>Cards</title>
+        <title>CARDS</title>
         <meta name="description" content="Meta description for the team page" />
       </Head>
-      <div><ViewCard key={firebaseKey} cardObj={cardDetails} onUpdate={() => null} /></div>
-      <div className="d-flex flex-wrap">
-        {cardDetails.card?.map((obj) => (
-          <ViewCard key={obj.firebaseKey} cardDetails={obj} onUpdate={() => null} />
-        ))}
+      <div style={{ width: '18rem', margin: '10px' }}>
+        <div>title: {cardDetails.title}</div>
       </div>
-
+      <h5>{cardDetails.cards?.map((card) => (
+        <CardCard key={card.firebaseKey} cardObj={card} onUpdate={() => null} />
+      ))}
+      </h5>
     </>
   );
 }

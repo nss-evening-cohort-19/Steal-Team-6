@@ -49,7 +49,16 @@ function ProjectForm({ obj }) {
       <form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} New Project</h2>
         <div className="form-floating mb-3">
-          <input type="text" className="form-control" id="floatingInput" name="title" placeholder="Enter Project Title" value={formInput.title} onChange={handleChange} required />
+          <input
+            type="text"
+            className="form-control"
+            id="floatingInput"
+            name="title"
+            placeholder="Enter Project Title"
+            value={formInput.title}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="floatingInput">Project Title</label>
         </div>
         <>
