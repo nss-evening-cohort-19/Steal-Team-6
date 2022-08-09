@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { deleteSingleCard, getSingleCard } from '../api/cardData';
+import { deleteSingleCard } from '../api/cardData';
 
 export default function CardCard({ cardObj, onUpdate }) {
-  const [cardName, setCardName] = useState({});
   const deleteThisCard = () => {
     if (window.confirm(`Delete ${cardObj.title}?`)) {
       deleteSingleCard(cardObj.firebaseKey).then(() => onUpdate());
     }
   };
-  useEffect(() => {
-    getSingleCard(cardObj.listId).then((response) => {
-      setCardName(response);
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
   return (
     <>
       <card style={{ width: '18rem', margin: '10px' }}>
-        <div>title: {cardObj.title}</div>
-        <div><p className="card-text bold"><b>Team:</b> {cardName.title}</p></div>
+        <div>title: {cardObj?.title}</div>
         <Link href={`/card/${cardObj.firebaseKey}`} passHref>
           <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
         </Link>
