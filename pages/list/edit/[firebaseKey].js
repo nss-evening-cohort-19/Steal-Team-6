@@ -4,11 +4,11 @@ import { getSingleList } from '../../../api/listData';
 import ListForm from '../../../components/forms/ListForm';
 
 function EditList() {
-  const [listObj, setEditList] = useState({});
+  const [listObj, setListObj] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
   useEffect(() => {
-    getSingleList(firebaseKey).then(setEditList);
+    getSingleList(firebaseKey).then(setListObj);
   }, [firebaseKey]);
   return (
     <ListForm obj={listObj} />

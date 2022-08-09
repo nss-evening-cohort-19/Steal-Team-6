@@ -6,6 +6,7 @@ import { FloatingLabel, Form } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createCards, updateCard } from '../../api/cardData';
 import { getProjectLists } from '../../api/projectData';
+import { getSingleList } from '../../api/listData';
 
 const initalState = {
   title: '',
@@ -19,8 +20,15 @@ function CardForm({ obj }) {
   const { projectId } = router.query;
 
   useEffect(() => {
-    getProjectLists(projectId).then(setLists);
-    if (obj.firebaseKey) setFormInput(obj);
+    if (projectId) {
+      getProjectLists(projectId).then(setLists);
+    }
+    if (obj.firebaseKey) {
+      getSingleList(obj.listId).then((response) => {
+        getProjectLists(response.projectId).then(setLists);
+      });
+      setFormInput(obj);
+    }
   }, [obj, projectId]);
 
   const handleChange = (e) => {
@@ -42,7 +50,7 @@ function CardForm({ obj }) {
       });
     }
   };
-  console.warn(formInput);
+
   return (
     <>
       <Head>
