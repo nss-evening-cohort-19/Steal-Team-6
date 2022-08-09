@@ -1,5 +1,5 @@
-import { getSingleProject, getProjectLists } from './projectData';
-import { getSingleList, getListCards } from './listData';
+import { getSingleProject, getProjectLists, deleteSingleProject } from './projectData';
+import { getSingleList, getListCards, deleteList } from './listData';
 // test //
 const viewProjectDetails = (projectFirebaseKey) => new Promise((resolve, reject) => {
   Promise.all([getSingleProject(projectFirebaseKey), getProjectLists(projectFirebaseKey)])
@@ -16,7 +16,18 @@ const viewListDetails = (listFirebaseKey) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
+const deleteProjectLists = (projectId) => new Promise((resolve, reject) => {
+  getProjectLists(projectId).then((listsArray) => {
+    const deleteListPromises = listsArray.map((list) => deleteList(list.firebaseKey));
+
+    Promise.all(deleteListPromises).then(() => {
+      deleteSingleProject(projectId).then(resolve);
+    });
+  }).catch((error) => reject(error));
+});
+
 export {
   viewListDetails,
   viewProjectDetails,
+  deleteProjectLists,
 };
