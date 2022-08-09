@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
-import { viewProjectDetails } from '../../api/mergedData';
+import { viewListDetails } from '../../api/mergedData';
 import ListCard from '../../components/ListCard';
 
 function ViewList() {
@@ -12,13 +12,14 @@ function ViewList() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    viewProjectDetails(firebaseKey).then(setListDetails);
+    viewListDetails(firebaseKey).then(setListDetails);
   }, [firebaseKey]);
+  console.warn(listDetails);
 
   return (
     <div style={{ width: '18rem', margin: '10px' }}>
       <div>Title: {listDetails.title}</div>
-      <Link href="/card/new" passHref>
+      <Link href={`/card/new/${listDetails.projectId}`} passHref>
         <Button
           variant="primary"
         >Add Card

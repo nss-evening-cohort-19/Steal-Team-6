@@ -5,6 +5,7 @@ const viewProjectDetails = (projectFirebaseKey) => new Promise((resolve, reject)
   Promise.all([getSingleProject(projectFirebaseKey), getProjectLists(projectFirebaseKey)])
     .then(([projectObject, projectListsArray]) => {
       resolve({ ...projectObject, lists: projectListsArray });
+      console.warn(projectObject, projectListsArray);
     }).catch((error) => reject(error));
 });
 

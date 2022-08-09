@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createCards, updateCard } from '../../api/cardData';
-import { getList } from '../../api/listData';
+import { getProjectLists } from '../../api/projectData';
 
 const initalState = {
   title: '',
@@ -16,11 +16,12 @@ function CardForm({ obj }) {
   const [lists, setLists] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
+  const { projectId } = router.query;
 
   useEffect(() => {
-    getList(lists.projectId).then(setLists);
+    getProjectLists(projectId).then(setLists);
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, lists]);
+  }, [obj, projectId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,10 +38,11 @@ function CardForm({ obj }) {
     } else {
       const payload = { ...formInput, uid: user.uid };
       createCards(payload).then(() => {
-        router.push('/');
+        router.push(`/list/${formInput.listId}`);
       });
     }
   };
+  console.warn(formInput);
   return (
     <>
       <Head>
@@ -58,9 +60,9 @@ function CardForm({ obj }) {
           onChange={handleChange}
           required
         />
-        <FloatingLabel controlId="floatingSelect" label="Card">
+        <FloatingLabel controlId="floatingSelect" label="List">
           <Form.Select
-            aria-label="Card"
+            aria-label="List"
             name="listId"
             onChange={handleChange}
             className="mb-3"
