@@ -26,8 +26,19 @@ const deleteProjectLists = (projectId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
+const deleteListCards = (listId) => new Promise((resolve, reject) => {
+  getListCards(listId).then((cardsArray) => {
+    const deleteCardPromises = cardsArray.map((card) => deleteCardPromises(card.firebaseKey));
+
+    Promise.all(deleteCardPromises).then(() => {
+      deleteList(listId).then(resolve);
+    });
+  }).catch((error) => reject(error));
+});
+
 export {
   viewListDetails,
   viewProjectDetails,
   deleteProjectLists,
+  deleteListCards,
 };
