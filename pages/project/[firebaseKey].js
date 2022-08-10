@@ -14,7 +14,7 @@ function ViewProject() {
 
   useEffect(() => {
     viewProjectDetails(firebaseKey).then(setProjectDetails);
-  }, [firebaseKey]);
+  }, [firebaseKey, projectDetails]);
 
   return (
     <div style={{ width: '18rem', margin: '10px' }}>

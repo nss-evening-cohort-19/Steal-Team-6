@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Card } from 'react-bootstrap';
-import { deleteList } from '../api/listData';
+import { deleteListCards } from '../api/mergedData';
 
 function ListCard({ listObj, onUpdate }) {
   const deleteThisList = () => {
     if (window.confirm(`Delete ${listObj.title}?`)) {
-      deleteList(listObj.firebaseKey).then(() => onUpdate());
+      deleteListCards(listObj.firebaseKey).then(() => onUpdate());
     }
   };
 
