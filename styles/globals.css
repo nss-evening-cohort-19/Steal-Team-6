@@ -3,6 +3,7 @@
 html,
 body {
   padding: 0;
+  background-color: #FAF3DD;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -18,5 +19,17 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #FAF3DD;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #68B0AB;
+  background-color: #68B0AB;
+  border-color: #696D7D;
+  border-color: cutom-cor;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #6b9d9a;
+  border-color: #696D7D; /*set the color you want here*/
 }

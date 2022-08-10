@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { deleteSingleCard } from '../api/cardData';
 
 export default function CardCard({ cardObj, onUpdate }) {
@@ -16,12 +16,12 @@ export default function CardCard({ cardObj, onUpdate }) {
       <Card style={{ width: '18rem', margin: '10px' }}>
         <div>title: {cardObj?.title}</div>
         <Link href={`/card/${cardObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
         </Link>
         <Link href={`/card/edit/${cardObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</Button>
         </Link>
-        <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisCard}>DELETE</button>
+        <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisCard}>DELETE</Button>
       </Card>
     </>
   );

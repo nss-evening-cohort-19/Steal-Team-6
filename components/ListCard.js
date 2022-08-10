@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+
 import { deleteListCards } from '../api/mergedData';
 
 function ListCard({ listObj, onUpdate }) {
@@ -16,12 +17,12 @@ function ListCard({ listObj, onUpdate }) {
       <Card style={{ width: '18rem', margin: '10px' }}>
         <div>Title: {listObj.title}</div>
         <Link href={`/list/${listObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
         </Link>
         <Link href={`/list/edit/${listObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</Button>
         </Link>
-        <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisList}>DELETE</button>
+        <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisList}>DELETE</Button>
       </Card>
     </>
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { FloatingLabel, Form } from 'react-bootstrap';
+import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createList, updateList } from '../../api/listData';
 import { getProjects } from '../../api/projectData';
@@ -50,7 +50,7 @@ function ListForm({ obj }) {
       <Head>
         <title>Add List</title>
       </Head>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} List</h2>
         <div className="form-floating mb-3">
           <input
@@ -86,8 +86,8 @@ function ListForm({ obj }) {
           </FloatingLabel>
           <label htmlFor="title">List Title</label>
         </div>
-        <button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} List</button>
-      </form>
+        <Button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} List</Button>
+      </Form>
     </>
   );
 }
