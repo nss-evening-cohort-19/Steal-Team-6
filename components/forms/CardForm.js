@@ -74,6 +74,7 @@ function CardForm({ obj }) {
             name="listId"
             onChange={handleChange}
             className="mb-3"
+            value={formInput.listId}
             required
           >
             <option value="">Select a List</option>
@@ -81,7 +82,7 @@ function CardForm({ obj }) {
               <option
                 key={list.firebaseKey}
                 value={list.firebaseKey}
-                selected={obj.listId === list.firebaseKey}
+                // selected={obj.listId === list.firebaseKey}
               >
                 {list.title}
               </option>

@@ -69,6 +69,7 @@ function ListForm({ obj }) {
               name="projectId"
               onChange={handleChange}
               className="mb-3"
+              value={formInput.projectId}
               required
             >
               <option value="">Select a Project</option>
@@ -76,7 +77,7 @@ function ListForm({ obj }) {
                 <option
                   key={project.firebaseKey}
                   value={project.firebaseKey}
-                  selected={obj.projectId === project.firebaseKey}
+                  // selected={obj.projectId === project.firebaseKey}
                 >
                   {project.title}
                 </option>

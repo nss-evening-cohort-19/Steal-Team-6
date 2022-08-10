@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { deleteSingleProject } from '../api/projectData';
+// import { deleteSingleProject } from '../api/projectData';
+import { deleteProjectLists } from '../api/mergedData';
 
 export default function ProjectCard({ projectObj, onUpdate }) {
   const deleteThisProject = () => {
     if (window.confirm(`Delete ${projectObj.title}?`)) {
-      deleteSingleProject(projectObj.firebaseKey).then(() => onUpdate());
+      deleteProjectLists(projectObj.firebaseKey).then(() => onUpdate());
     }
   };
   return (
