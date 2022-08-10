@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import { getSingleCard } from '../../api/cardData';
 import CardCard from '../../components/CardCard';
 
@@ -16,10 +18,18 @@ export default function ViewCard() {
     <>
       <Head>
         <title>CARDS</title>
-        <meta name="description" content="Meta description for the team page" />
       </Head>
+      <Link href={`/list/${cardDetails.listId}`} passHref>
+        <Button
+          variant="primary"
+        >Back to List
+        </Button>
+      </Link>
       <div style={{ width: '18rem', margin: '10px' }}>
         <div>title: {cardDetails.title}</div>
+      </div>
+      <div style={{ width: '18rem', margin: '10px' }}>
+        <div>Comments: {cardDetails.comments}</div>
       </div>
       <h5>{cardDetails.cards?.map((card) => (
         <CardCard key={card.firebaseKey} cardObj={card} onUpdate={() => null} />

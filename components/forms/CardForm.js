@@ -68,6 +68,14 @@ function CardForm({ obj }) {
           onChange={handleChange}
           required
         />
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Have Comments?"
+          name="comments"
+          value={formInput.comments}
+          onChange={handleChange}
+        />
         <FloatingLabel controlId="floatingSelect" label="List">
           <Form.Select
             aria-label="List"

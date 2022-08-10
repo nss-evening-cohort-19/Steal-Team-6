@@ -19,6 +19,12 @@ function ViewList() {
   return (
     <div style={{ width: '18rem', margin: '10px' }}>
       <div>Title: {listDetails.title}</div>
+      <Link href={`/project/${listDetails.projectId}`} passHref>
+        <Button
+          variant="primary"
+        >Back to Project Overview
+        </Button>
+      </Link>
       <Link href={`/card/new/${listDetails.projectId}`} passHref>
         <Button
           variant="primary"
