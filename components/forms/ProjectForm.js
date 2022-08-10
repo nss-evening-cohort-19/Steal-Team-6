@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createProject, updateProject } from '../../api/projectData';
 
@@ -46,7 +47,7 @@ function ProjectForm({ obj }) {
         <title>Creat a new Project!</title>
         <meta name="description" content="Meta description for the team page" />
       </Head>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} New Project</h2>
         <div className="form-floating mb-3">
           <input
@@ -77,8 +78,8 @@ function ProjectForm({ obj }) {
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Public Project?</label>
           </div>
         </>
-        <button className="btn btn-primary btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Project</button>
-      </form>
+        <Button className="btn btn-primary btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Project</Button>
+      </Form>
     </>
   );
 }

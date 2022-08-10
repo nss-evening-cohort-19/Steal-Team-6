@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { FloatingLabel, Form } from 'react-bootstrap';
+import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createCards, updateCard } from '../../api/cardData';
 import { getProjectLists } from '../../api/projectData';
@@ -57,7 +57,7 @@ function CardForm({ obj }) {
         <title>Add Card</title>
         <meta name="description" content="Meta description for the team page" />
       </Head>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</h2>
         <input
           className="form-control"
@@ -97,8 +97,8 @@ function CardForm({ obj }) {
             ))}
           </Form.Select>
         </FloatingLabel>
-        <button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</button>
-      </form>
+        <Button className="btn btn-danger btn-lg copy-btn" type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</Button>
+      </Form>
     </>
   );
 }

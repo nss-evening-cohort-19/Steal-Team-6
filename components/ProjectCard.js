@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 // import { deleteSingleProject } from '../api/projectData';
+import { Button } from 'react-bootstrap';
 import { deleteProjectLists } from '../api/mergedData';
 
 export default function ProjectCard({ projectObj, onUpdate }) {
@@ -15,12 +16,12 @@ export default function ProjectCard({ projectObj, onUpdate }) {
       <div className="card" style={{ width: '18rem', margin: '10px' }}>
         {projectObj.title}
         <Link href={`/project/${projectObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</button>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
         </Link>
         <Link href={`/project/edit/${projectObj.firebaseKey}`} passHref>
-          <button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</button>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</Button>
         </Link>
-        <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisProject}>DELETE</button>
+        <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisProject}>DELETE</Button>
       </div>
     </>
   );

@@ -9,7 +9,6 @@ import { getProjectLists } from '../../api/projectData';
 function ViewProject() {
   const [projectDetails, setProjectDetails] = useState({});
   const router = useRouter();
-
   const { firebaseKey } = router.query;
 
   useEffect(() => {
