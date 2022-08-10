@@ -18,7 +18,6 @@ function ListForm({ obj }) {
   const [projects, setProjects] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-  console.warn(obj);
   useEffect(() => {
     getProjects(user.uid).then(setProjects);
 
