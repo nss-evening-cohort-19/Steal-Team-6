@@ -14,7 +14,7 @@ function ViewList() {
 
   useEffect(() => {
     viewListDetails(firebaseKey).then(setListDetails);
-  }, [firebaseKey, listDetails]);
+  }, [firebaseKey]);
 
   return (
     <div style={{ width: '18rem', margin: '10px' }}>
