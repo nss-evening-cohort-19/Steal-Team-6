@@ -1,3 +1,27 @@
+ ## Name of Project:
+      - Trello-Ish
+ ## Project Overview: 
+      - Trello-Ish is a spoof of the popular team organization app, Trello. Modeled after the same app idea, Trello-Ish will allow a user to Log-In via Google Authentication and give the user permission to create a project board. On the project board, a user may then add lists, and also add additional cards to those lists. This app is still in its prototype phase, so later goals would be to give the user permission to add other members to specific projects that the user has created. In addition to the top nav bar, we would like to add a side nav bar that allows view of multiple boards with the option to create new boards, a members view which allows the user to assign current members to projects as well as add new users, and a calendar for ease of access to planning. 
+## Wireframe: 
+    - https://dbdiagram.io/d/62e84badf31da965e85945b0
+
+## Deployed Project: 
+## Project Board: 
+    - https://github.com/orgs/nss-evening-cohort-19/projects/6
+## User Description: 
+    - Our user is the modern day business person who is in need of both visual organization and team communication. As stated in the project overview, the user will be allowed to create boards, or projects, for specific uses and add lists and cards onto those various projects. Ultimately, the app is designed to keep everyone on a team or organization organized and on the same page.
+## List of Features:
+		- Creating  projects for team organization and updating, viewing and deleting those projects. 
+		- Searching specific projects, lists and cards.
+## Screenshots of Project: 
+
+## List of Contributors/Githhubs: 
+		- Imad Ottallah: https://github.com/ImadOttallah,
+		- Keaton Law: https://github.com/KLaw47, 
+		- Adam Steel: https://github.com/mcgrief,
+		- Emily Stroud: https://github.com/emilyjstroud
+## Loom Video: 
+
 # React/Next.js Template
 
 [See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
