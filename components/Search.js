@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Search({ cards, setFilteredCards }) {
+export default function Search({ projects, setFilteredProjects }) {
   const [query, setQuery] = useState('');
   const handleChange = (e) => {
     const { value } = e.target;
     setQuery(value);
-    const results = cards.filter((card) => card.title.toLowerCase().includes(value.toLowerCase()));
-    setFilteredCards(results);
+    const results = projects.filter((project) => project.title.toLowerCase().includes(value.toLowerCase()));
+    setFilteredProjects(results);
   };
   return (
     <>
-      <input placeholder="Search Cards" value={query} onChange={handleChange} />
+      <input placeholder="Search Projects" value={query} onChange={handleChange} />
     </>
   );
 }
 
 Search.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.shape({
+  projects: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
   })).isRequired,
-  setFilteredCards: PropTypes.func.isRequired,
+  setFilteredProjects: PropTypes.func.isRequired,
 };

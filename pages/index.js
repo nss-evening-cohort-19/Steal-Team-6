@@ -3,13 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { getProjects } from '../api/projectData';
 import ProjectCard from '../components/ProjectCard';
+import Search from '../components/Search';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
   const { user } = useAuth();
+
   const getAllTheProjects = () => {
-    getProjects(user.uid).then(setProjects);
+    getProjects(user.uid).then((projectArray) => {
+      setProjects(projectArray);
+      setFilteredProjects(projectArray);
+    });
   };
   useEffect(() => {
     getAllTheProjects();
@@ -18,6 +24,7 @@ function Home() {
 
   return (
     <div className="text-center my-4">
+      <Search projects={projects} setFilteredProjects={setFilteredProjects} />
       <Link href="/project/new" passHref>
         <Button
           variant="primary"
@@ -25,11 +32,10 @@ function Home() {
         </Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {projects.map((project) => (
+        {filteredProjects.map((project) => (
           <ProjectCard key={project.firebaseKey} projectObj={project} onUpdate={getAllTheProjects} />
         ))}
       </div>
-
     </div>
   );
 }
