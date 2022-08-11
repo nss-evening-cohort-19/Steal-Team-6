@@ -24,6 +24,7 @@ function Home() {
 
   return (
     <div className="text-center my-4">
+      <title>Trello-Ish</title>
       <Search projects={projects} setFilteredProjects={setFilteredProjects} />
       <Link href="/project/new" passHref>
         <Button

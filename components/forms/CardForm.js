@@ -54,7 +54,7 @@ function CardForm({ obj }) {
   return (
     <>
       <Head>
-        <title>Add Card</title>
+        <title>Add a Card</title>
         <meta name="description" content="Meta description for the team page" />
       </Head>
       <Form onSubmit={handleSubmit}>

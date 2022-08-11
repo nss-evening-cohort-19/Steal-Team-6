@@ -17,7 +17,7 @@ export default function ViewCard() {
   return (
     <>
       <Head>
-        <title>CARDS</title>
+        <title>Cards</title>
       </Head>
       <Link href={`/list/${cardDetails.listId}`} passHref>
         <Button
