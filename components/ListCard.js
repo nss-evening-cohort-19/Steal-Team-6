@@ -15,7 +15,7 @@ function ListCard({ listObj, onUpdate }) {
   return (
     <>
       <Card style={{ width: '18rem', margin: '10px' }}>
-        <div>Title: {listObj.title}</div>
+        <h3>LIST: {listObj.title}</h3>
         <Link href={`/list/${listObj.firebaseKey}`} passHref>
           <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
         </Link>

@@ -55,10 +55,10 @@ function CardForm({ obj }) {
     <>
       <Head>
         <title>Add Card</title>
-        <meta name="description" content="Meta description for the team page" />
+        <meta name="description" content="card create/update" />
       </Head>
       <Form onSubmit={handleSubmit}>
-        <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</h2>
+        <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Card</h2>
         <input
           className="form-control"
           type="text"

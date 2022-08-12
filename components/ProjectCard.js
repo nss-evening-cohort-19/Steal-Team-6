@@ -13,15 +13,19 @@ export default function ProjectCard({ projectObj, onUpdate }) {
   };
   return (
     <>
-      <div className="card" style={{ width: '18rem', margin: '10px' }}>
-        {projectObj.title}
-        <Link href={`/project/${projectObj.firebaseKey}`} passHref>
-          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
-        </Link>
-        <Link href={`/project/edit/${projectObj.firebaseKey}`} passHref>
-          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</Button>
-        </Link>
-        <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisProject}>DELETE</Button>
+      <div className="card" style={{ width: '25rem', margin: '10px' }}>
+        <h1>
+          {projectObj.title}
+        </h1>
+        <>
+          <Link href={`/project/${projectObj.firebaseKey}`} passHref>
+            <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
+          </Link>
+          <Link href={`/project/edit/${projectObj.firebaseKey}`} passHref>
+            <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">UPDATE</Button>
+          </Link>
+          <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick={deleteThisProject}>DELETE</Button>
+        </>
       </div>
     </>
   );
