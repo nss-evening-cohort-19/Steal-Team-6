@@ -73,7 +73,7 @@ function CardForm({ obj }) {
           type="text"
           placeholder="Have Comments?"
           name="comments"
-          value={formInput.comments}
+          value={formInput.comments || ''}
           onChange={handleChange}
         />
         <FloatingLabel controlId="floatingSelect" label="List">
