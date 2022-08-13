@@ -12,7 +12,15 @@ function ViewProject() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    viewProjectDetails(firebaseKey).then(setProjectDetails);
+    let isMounted = true;
+    viewProjectDetails(firebaseKey).then((response) => {
+      if (isMounted) {
+        viewProjectDetails(response.firebaseKey).then(setProjectDetails);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [firebaseKey, projectDetails]);
 
   return (

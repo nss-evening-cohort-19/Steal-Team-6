@@ -13,7 +13,15 @@ function ViewList() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    viewListDetails(firebaseKey).then(setListDetails);
+    let isMounted = true;
+    viewListDetails(firebaseKey).then((response) => {
+      if (isMounted) {
+        viewListDetails(response.firebaseKey).then(setListDetails);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [firebaseKey, listDetails]);
 
   return (
