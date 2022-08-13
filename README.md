@@ -24,6 +24,7 @@
 		- Adam Steel: https://github.com/mcgrief,
 		- Emily Stroud: https://github.com/emilyjstroud
 ## Loom Video: 
+https://www.loom.com/share/3ad43238423541d49484964e03560c88
 
 # React/Next.js Template
 
