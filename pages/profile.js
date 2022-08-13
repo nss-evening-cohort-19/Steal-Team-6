@@ -1,10 +1,12 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import User from '../components/User';
 import { useAuth } from '../utils/context/authContext';
 import { signOut } from '../utils/auth';
 
 export default function Profile() {
   const { user } = useAuth();
+  console.warn(user);
   return (
     <div><User
       name={user.displayName}
@@ -12,7 +14,11 @@ export default function Profile() {
       img={user.photoURL}
       lastLogin={user.metadata.lastSignInTime}
     />
-      <button type="button" onClick={signOut}> Blow this scene</button>
+      <Button
+        onClick={signOut}
+        variant="primary"
+      >Sign Out
+      </Button>
     </div>
   );
 }

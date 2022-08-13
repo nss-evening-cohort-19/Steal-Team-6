@@ -14,7 +14,7 @@ export default function CardCard({ cardObj, onUpdate }) {
   return (
     <>
       <Card style={{ width: '18rem', margin: '10px' }}>
-        <div>title: {cardObj?.title}</div>
+        <h3>CARD: {cardObj?.title}</h3>
         <Link href={`/card/${cardObj.firebaseKey}`} passHref>
           <Button className="btn btn-danger btn-lg copy-btn" type="button" onClick="">VIEW</Button>
         </Link>
