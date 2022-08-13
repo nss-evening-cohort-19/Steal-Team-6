@@ -54,6 +54,8 @@ function CardForm({ obj }) {
   return (
     <>
       <Head>
+        <title>Add a Card</title>
+        <meta name="description" content="Meta description for the team page" />
         <title>Add Card</title>
         <meta name="description" content="card create/update" />
       </Head>

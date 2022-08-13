@@ -8,17 +8,29 @@ export default function Profile() {
   const { user } = useAuth();
   console.warn(user);
   return (
-    <div><User
-      name={user.displayName}
-      email={user.email}
-      img={user.photoURL}
-      lastLogin={user.metadata.lastSignInTime}
-    />
-      <Button
-        onClick={signOut}
-        variant="primary"
-      >Sign Out
-      </Button>
-    </div>
+    <>
+      <div>
+        <title>Trello-Ish</title>
+        <User
+          name={user.displayName}
+          email={user.email}
+          img={user.photoURL}
+          lastLogin={user.metadata.lastSignInTime}
+        />
+      </div>
+      <button type="button" onClick={signOut}> Blow this scene</button>
+      <div><User
+        name={user.displayName}
+        email={user.email}
+        img={user.photoURL}
+        lastLogin={user.metadata.lastSignInTime}
+      />
+        <Button
+          onClick={signOut}
+          variant="primary"
+        >Sign Out
+        </Button>
+      </div>
+    </>
   );
 }

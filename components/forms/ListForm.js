@@ -48,7 +48,7 @@ function ListForm({ obj }) {
   return (
     <>
       <Head>
-        <title>Add List</title>
+        <title>Add a List</title>
       </Head>
       <Form onSubmit={handleSubmit}>
         <h2 className="text-Black mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} List</h2>
