@@ -13,12 +13,20 @@ function ViewList() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    viewListDetails(firebaseKey).then(setListDetails);
+    let isMounted = true;
+    viewListDetails(firebaseKey).then((response) => {
+      if (isMounted) {
+        viewListDetails(response.firebaseKey).then(setListDetails);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [firebaseKey, listDetails]);
 
   return (
     <div style={{ width: '18rem', margin: '10px' }}>
-      <div>Title: {listDetails.title}</div>
+      <h1>LIST: {listDetails.title}</h1>
       <Link href={`/project/${listDetails.projectId}`} passHref>
         <Button
           variant="primary"

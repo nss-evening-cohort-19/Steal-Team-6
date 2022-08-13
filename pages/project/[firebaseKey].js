@@ -13,9 +13,9 @@ function ViewProject() {
 
   useEffect(() => {
     let isMounted = true;
-    viewProjectDetails(firebaseKey).then(() => {
+    viewProjectDetails(firebaseKey).then((response) => {
       if (isMounted) {
-        setProjectDetails();
+        viewProjectDetails(response.firebaseKey).then(setProjectDetails);
       }
     });
     return () => {
