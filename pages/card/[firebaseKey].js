@@ -17,7 +17,7 @@ export default function ViewCard() {
   return (
     <>
       <Head>
-        <title>CARDS</title>
+        <title>Cards</title>
       </Head>
       <Link href={`/list/${cardDetails.listId}`} passHref>
         <Button
@@ -25,11 +25,11 @@ export default function ViewCard() {
         >Back to List
         </Button>
       </Link>
-      <div style={{ width: '18rem', margin: '10px' }}>
-        <div>title: {cardDetails.title}</div>
+      <div style={{ width: '25rem', margin: '10px' }}>
+        <h1>CARD: {cardDetails.title}</h1>
       </div>
       <div style={{ width: '18rem', margin: '10px' }}>
-        <div>Comments: {cardDetails.comments}</div>
+        <h3>Comments: {cardDetails.comments}</h3>
       </div>
       <h5>{cardDetails.cards?.map((card) => (
         <CardCard key={card.firebaseKey} cardObj={card} onUpdate={() => null} />

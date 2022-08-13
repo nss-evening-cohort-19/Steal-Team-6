@@ -25,11 +25,13 @@ function ViewProject() {
 
   return (
     <div style={{ width: '18rem', margin: '10px' }}>
+      <title>Trello-Ish</title>
       <div>Title: {projectDetails.title}</div>
+      <h1>PROJECT: {projectDetails.title}</h1>
       <Link href="/list/new" passHref>
         <Button
           variant="primary"
-        >Add List
+        >Add a List
         </Button>
       </Link>
 

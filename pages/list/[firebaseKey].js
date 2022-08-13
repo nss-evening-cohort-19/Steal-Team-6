@@ -26,6 +26,8 @@ function ViewList() {
 
   return (
     <div style={{ width: '18rem', margin: '10px' }}>
+      <title>Trello-Ish</title>
+      <div>Title: {listDetails.title}</div>
       <h1>LIST: {listDetails.title}</h1>
       <Link href={`/project/${listDetails.projectId}`} passHref>
         <Button
@@ -36,7 +38,7 @@ function ViewList() {
       <Link href={`/card/new/${listDetails.projectId}`} passHref>
         <Button
           variant="primary"
-        >Add Card
+        >Add a Card
         </Button>
       </Link>
 
