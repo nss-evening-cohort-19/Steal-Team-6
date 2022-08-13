@@ -4,8 +4,8 @@
       - Trello-Ish is a spoof of the popular team organization app, Trello. Modeled after the same app idea, Trello-Ish will allow a user to Log-In via Google Authentication and give the user permission to create a project board. On the project board, a user may then add lists, and also add additional cards to those lists. This app is still in its prototype phase, so later goals would be to give the user permission to add other members to specific projects that the user has created. In addition to the top nav bar, we would like to add a side nav bar that allows view of multiple boards with the option to create new boards, a members view which allows the user to assign current members to projects as well as add new users, and a calendar for ease of access to planning. 
 ## Wireframe: 
     - https://dbdiagram.io/d/62e84badf31da965e85945b0
-
 ## Deployed Project: 
+    - https://trello-ish.netlify.app/
 ## Project Board: 
     - https://github.com/orgs/nss-evening-cohort-19/projects/6
 ## User Description: 
@@ -14,7 +14,10 @@
 		- Creating  projects for team organization and updating, viewing and deleting those projects. 
 		- Searching specific projects, lists and cards.
 ## Screenshots of Project: 
-
+    - https://user-images.githubusercontent.com/102272030/184499585-2236c16a-d97d-42b3-a7f2-2c74c160eafa.png
+    - https://user-images.githubusercontent.com/102272030/184499616-15fdc9d8-9f7a-40e8-a842-a641bb023b6b.png
+    - https://user-images.githubusercontent.com/102272030/184499626-cae29190-4085-487d-a3dd-3d098f356538.png
+    - https://user-images.githubusercontent.com/102272030/184499648-5ac51253-c9ec-4c88-89b8-a59f03303209.png
 ## List of Contributors/Githhubs: 
 		- Imad Ottallah: https://github.com/ImadOttallah,
 		- Keaton Law: https://github.com/KLaw47, 
