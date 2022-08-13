@@ -10,7 +10,15 @@ function ListCard({ listObj, onUpdate }) {
   const [card, setCard] = useState([]);
 
   useEffect(() => {
-    getListCards(listObj.firebaseKey).then(setCard);
+    let isMounted = true;
+    getListCards(listObj.firebaseKey).then((response) => {
+      if (isMounted) {
+        setCard(response);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [listObj]);
   const deleteThisList = () => {
     if (window.confirm(`Delete ${listObj.title}?`)) {
@@ -24,7 +32,7 @@ function ListCard({ listObj, onUpdate }) {
         <h3>LIST: {listObj.title}</h3>
         <ul>
           {card.map((cards) => (
-            <li key={card.firebaseKey}>
+            <li key={cards.firebaseKey}>
               {cards.title}
             </li>
           ))}

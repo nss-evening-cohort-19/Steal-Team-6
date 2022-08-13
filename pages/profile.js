@@ -11,14 +11,7 @@ export default function Profile() {
     <>
       <div>
         <title>Trello-Ish</title>
-        <User
-          name={user.displayName}
-          email={user.email}
-          img={user.photoURL}
-          lastLogin={user.metadata.lastSignInTime}
-        />
       </div>
-      <button type="button" onClick={signOut}> Blow this scene</button>
       <div><User
         name={user.displayName}
         email={user.email}
